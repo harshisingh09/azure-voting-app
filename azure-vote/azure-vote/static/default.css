@@ -1,5 +1,5 @@
 body {
-    background-color:#F8F8F8;
+    background-color:#f7e2dc;
 }
 
 div#container {
@@ -64,7 +64,7 @@ div#results {
 }
 
 .button1 {
-    background-color: white; 
+    background-color: #edd1c6; 
     color: black; 
     border: 2px solid #008CBA;
 }
@@ -74,7 +74,7 @@ div#results {
     color: white;
 }
 .button2 {
-    background-color: white;
+    background-color: #edd1c6;
     color: black;
     border: 2px solid #555555;
 }
@@ -85,7 +85,7 @@ div#results {
 }
 
 .button3 {
-    background-color: white; 
+    background-color: #edd1c6; 
     color: black; 
     border: 2px solid #f44336;
 }
