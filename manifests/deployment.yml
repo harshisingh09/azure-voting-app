@@ -27,12 +27,12 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azure-vote-front
+  name: azurevotefront
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: azure-vote-front
+      app: azurevotefront
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -41,12 +41,12 @@ spec:
   template:
     metadata:
       labels:
-        app: azure-vote-front
+        app: azurevotefront
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: azure-vote-front
+      - name: azurevotefront
         image: acrdolly.azurecr.io/azurevotefront:v1
         ports:
         - containerPort: 80
