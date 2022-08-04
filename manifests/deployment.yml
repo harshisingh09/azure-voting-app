@@ -1,19 +1,61 @@
-apiVersion : apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: azurevotefront 
+  name: azure-vote-back
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: azurevotefront
+      app: azure-vote-back
   template:
     metadata:
       labels:
-        app: azurevotefront 
+        app: azure-vote-back
     spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
       containers:
-        - name: azurevotefront 
-          image: acrdolly.azurecr.io/azurevotefront
-          ports:
-          - containerPort: 80
+      - name: azure-vote-back
+        image: mcr.microsoft.com/oss/bitnami/redis
+        env:
+        - name: ALLOW_EMPTY_PASSWORD
+          value: "yes"
+        ports:
+        - containerPort: 6379
+          name: redis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-vote-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-vote-front
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 60
+  template:
+    metadata:
+      labels:
+        app: azure-vote-front
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: azure-vote-front
+        image: acrdolly.azurecr.io/azurevotefront:v1
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 500m
+          limits:
+            cpu: 1500m
+        env:
+        - name: REDIS
+          value: "azure-vote-back"
+       
