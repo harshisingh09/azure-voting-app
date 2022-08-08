@@ -47,7 +47,7 @@ spec:
         "kubernetes.io/os": linux
       hostAliases:
       - ip: "40.117.74.8"
-      hostnames:
+      hostname:
       - "hello.example.com"
       containers:
       - name: azurevotefront
