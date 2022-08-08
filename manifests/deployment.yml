@@ -50,15 +50,29 @@ spec:
         image: acrdolly.azurecr.io/azurevotefront:v1
         ports:
         - containerPort: 80
-        command:
-        - cat
-        args:
-        - "/etc/hosts"
         resources:
           requests:
             cpu: 500m
           limits:
-            cpu: 1500m
+            cpu: 1300m
         env:
         - name: REDIS
           value: "azure-vote-back"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  restartPolicy: Never
+  hostAliases:
+  - ip: "40.117.74.8"
+    hostnames:
+    - "epamcafe-demo.com"
+  containers:
+  - name: cat-hosts
+    image: busybox:1.28
+    command:
+    - cat
+    args:
+    - "/etc/hosts"
