@@ -16,7 +16,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: azure-vote-back
-        image: acrdolly.azurecr.io/library/redis:latest
+        image: acrdolly.azurecr.io/redis:latest
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "yes"
