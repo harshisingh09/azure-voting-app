@@ -13,7 +13,6 @@ spec:
     metadata:
       labels:
         app: azure-vote-back
-    name: azure-vote-back-pod
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
@@ -46,7 +45,6 @@ spec:
     metadata:
       labels:
         app: azurevotefront
-      name: azurevotefront-pod
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
