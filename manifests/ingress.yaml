@@ -1,14 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-name
+  labels:
+    app: azurevotefront
+  name: ingress-service
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "/$1"
+    nginx.ingress.kubernetes.io/default-backend: azurevotefront
 spec:
   rules:
-  - http:
-      paths:
-      - path: "/"
-        backend:
-          serviceName: azurevotefront
-          servicePort: 80
+    - host: "cafedemo.incubation.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix 
+            backend: 
+              service:  
+                name: azurevotefront
+                port:
+                  number: 80
