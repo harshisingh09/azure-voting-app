@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: azure-vote-back
+  name: azure-backend
 spec:
   replicas: 1
   selector:
@@ -30,6 +31,7 @@ kind: Deployment
 metadata:
   labels:
     app: azurevotefront
+  name: azure-frontend
 spec:
   replicas: 1
   selector:
