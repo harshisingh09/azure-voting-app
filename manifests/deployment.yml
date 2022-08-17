@@ -53,9 +53,9 @@ spec:
         - containerPort: 80
         resources:
           requests:
-            cpu: 250m
+            cpu: 500m
           limits:
-            cpu: 1200m
+            cpu: 1500m
         env:
         - name: REDIS
           value: "azure-vote-back"
