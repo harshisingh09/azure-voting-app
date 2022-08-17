@@ -53,7 +53,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'harshisingh09azurevotingapp-4959.default'
+    environment: 'harshisingh09azurevotingapp-4959.deployment-namespace'
     strategy:
       runOnce:
         deploy:
